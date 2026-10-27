@@ -1,0 +1,24 @@
+FASE 37 — ENLACE PROPIO Y CLIENTES DIRECTOS DE ADMINISTRACIÓN
+
+Esta versión parte de Fase 36. Añade un enlace único para que la administración general registre sus propios clientes, pruebas o cortesías. No modifica los flujos de Hotmart, centros ni vendedores.
+
+APLICAR EN ESTE ORDEN
+1. Supabase > SQL Editor > New query: pega y ejecuta completo actualizacion_clientes_propios_admin_fase37.sql.
+   “Success. No rows returned” indica que se instaló correctamente.
+2. En Vercel, publica simulador_financiero_fase37_vercel.zip en el mismo proyecto y dominio. El ZIP contiene index.html en la raíz.
+3. Inicia sesión como administración general, abre el panel y localiza “Mi enlace para clientes propios”. El enlace se genera automáticamente al cargar el panel.
+4. Copia el enlace y envíaselo al cliente. El formulario solicita nombre, correo, teléfono y autorización para que la administración consulte sus datos de contacto.
+5. El registro aparecerá en “Mis clientes directos” con acceso pendiente. Usa “Habilitar” para dar acceso, “Bloquear” para suspenderlo, o “Eliminar” para borrar la cuenta y sus avances.
+
+CONTROL DEL ENLACE
+- Desactivar enlace: impide nuevos registros con el enlace actual; no cambia el acceso de clientes ya registrados.
+- Activar enlace: vuelve a aceptar registros.
+- Renovar enlace: invalida el enlace anterior y crea uno nuevo; los clientes ya registrados se conservan.
+
+SEPARACIÓN DE REGISTROS
+- Este enlace es para tus ventas directas, pruebas y cortesías. Las cuentas quedan atribuidas a la administración general.
+- Quien compró en Hotmart debe registrarse por el flujo normal con el mismo correo de compra, para que el webhook confirme su acceso.
+- Los registros de centros y vendedores siguen usando sus enlaces independientes.
+
+ELIMINAR CLIENTE
+La eliminación desde la tabla es permanente e incluye los avances guardados del cliente. Si solo quieres suspender el acceso y conservar su historial, usa “Bloquear”.
